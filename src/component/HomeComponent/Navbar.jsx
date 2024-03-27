@@ -5,6 +5,7 @@ import Sidebar from './Sidebar'
 import { useDispatch, useSelector } from 'react-redux'
 import supabase from '../../supabase/supabase'
 import { removeUsers } from '../../slices/slices'
+import { FaUserCircle } from "react-icons/fa";
 
 export default function Navbar() {
 
@@ -52,8 +53,9 @@ export default function Navbar() {
             {data?(<p onClick={logout} className='hidden md:flex text-[#e70071]'>{`You in ShopQ`}</p>):<button className='hidden md:flex bg-[#e70071] p-2 text-sm text-white lg:text-lg font-medium rounded-lg' onClick={()=>setIsopen(true)}>Log in</button>}
             <Link className='hidden md:flex items-center gap-1' to={'/cart'}><i className=" hidden md:flex fa-solid fa-cart-plus text-xl  text-[#e70071]" style={{color: "#000000"}}></i><p>Cart</p></Link>
       </div>
-      {sideBar?<div className='lg:hidden'>
+      {sideBar?<div className='flex items-center gap-4 md:hidden'>
         <i className="fa-solid fa-bars text-lg md:hidden cursor-pointer" onClick={handleclick} style={{color: "#000000"}}></i>
+        <FaUserCircle className=' text-lg' onClick={()=>setIsopen(true)}/>
       </div>:<></>}
     </div>
         <Sidebar sideBar={sideBar} setSidebar={setSidebar}/>
